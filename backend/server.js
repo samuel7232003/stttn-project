@@ -13,6 +13,9 @@ const http = require("http");
 const exp = require('constants');
 const server = http.createServer(app);
 
+const socketIo = require("socket.io");
+const fs = require("fs");
+
 app.use(cors());
 
 app.use(express.json());
@@ -26,14 +29,23 @@ app.use("/", webAPI);
 
 app.use('/api/v1', apiRoutes);
 
-(async () => {
-    try {
-        await connection();
+const io = socketIo(server, { cors: { origin: "*" } });
 
-        server.listen(port, () => {
-            console.log(`Backend Nodejs App listening on port ${port}`);
-        })
-    } catch (error) {
-        console.log(">>> Error connect tp DB: ", error);
-    }
-})()
+io.on("connection", (socket) => {
+    console.log("🟢 Client kết nối!");
+
+    socket.on("frame", (blob) => {
+        fs.writeFileSync("frame.jpg", blob); // Lưu frame vào file
+    });
+
+    socket.on("disconnect", () => console.log("🔴 Client ngắt kết nối!"));
+});
+
+// API cho Python lấy ảnh
+app.get("/frame", (req, res) => {
+    const img = fs.readFileSync("frame.jpg");
+    res.contentType("image/jpeg");
+    res.send(img);
+});
+
+server.listen(port, () => console.log(`🚀 WebSocket server chạy tại http://localhost:${port}`));

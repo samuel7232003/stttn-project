@@ -5,7 +5,7 @@ export default function Home(){
     return (
         <div>
             <Header/>
-            <div>
+            <div style={{paddingTop: "70px"}}>
                 <Outlet/>
             </div>
         </div>

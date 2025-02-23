@@ -1,15 +1,19 @@
 import search_icon from "../../images/Vector.png"
+import logo from "../../images/LOGO (2).png"
 import "./header.css"
 
 export default function Header() {
     return (
         <header className="header-main">
-            <figure className="logo"></figure>
+            <a href="/"><figure className="logo">
+                <img src={logo} alt="" />
+            </figure>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="/">TRANG CHỦ</a></li>
-                    <li><a href="/">CAMERA TỪ VỰNG</a></li>
-                    <li><a href="/">CHATBOT</a></li>
+                    <li className="select"><a href="/">TRANG CHỦ</a></li>
+                    <li><a href="/camera">CAMERA TỪ VỰNG</a><p>AI</p></li>
+                    <li><a href="/">CHATBOT</a><p>AI</p></li>
                     <li><a href="/">FLASHCARD</a></li>
                     <li><a href="/">ĐỌC SÁCH</a></li>
                 </ul>
