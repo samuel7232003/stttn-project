@@ -2,7 +2,12 @@ import search_icon from "../../images/Vector.png"
 import logo from "../../images/LOGO (2).png"
 import "./header.css"
 
-export default function Header() {
+interface Props{
+    curPage :string;
+}
+
+export default function Header({curPage} :Props) {
+
     return (
         <header className="header-main">
             <a href="/"><figure className="logo">
@@ -11,11 +16,11 @@ export default function Header() {
             </a>
             <nav>
                 <ul>
-                    <li className="select"><a href="/">TRANG CHỦ</a></li>
-                    <li><a href="/camera">CAMERA TỪ VỰNG</a><p>AI</p></li>
-                    <li><a href="/">CHATBOT</a><p>AI</p></li>
-                    <li><a href="/">FLASHCARD</a></li>
-                    <li><a href="/">ĐỌC SÁCH</a></li>
+                    <li className={curPage==="welcome"?"select":""}><a href="/">TRANG CHỦ</a></li>
+                    <li className={curPage==="camera"?"select":""}><a href="/camera">CAMERA TỪ VỰNG</a><p>AI</p></li>
+                    <li className={curPage==="chatbot"?"select":""}><a href="/chatbot">CHATBOT</a><p>AI</p></li>
+                    <li className={curPage==="flashcard"?"select":""}><a href="/">FLASHCARD</a></li>
+                    <li className={curPage==="readbook"?"select":""}><a href="/">ĐỌC SÁCH</a></li>
                 </ul>
             </nav>
             <div className="right">

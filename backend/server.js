@@ -3,6 +3,7 @@ const express = require('express');
 const configViewEngine = require('./config/viewEngine');
 const apiRoutes = require('./rountes/api');
 const connection = require('./config/database');
+const OpenAI = require("openai")
 
 const cors = require('cors');
 
@@ -10,11 +11,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const http = require("http");
-const exp = require('constants');
 const server = http.createServer(app);
-
-const socketIo = require("socket.io");
-const fs = require("fs");
 
 app.use(cors());
 
@@ -27,25 +24,44 @@ const webAPI = express.Router();
 
 app.use("/", webAPI);
 
-app.use('/api/v1', apiRoutes);
+app.use('/', apiRoutes);
 
-const io = socketIo(server, { cors: { origin: "*" } });
+const API_KEY = process.env.OPENAI_API_KEY;
 
-io.on("connection", (socket) => {
-    console.log("🟢 Client kết nối!");
+const openai = new OpenAI({
+    apiKey: API_KEY
+  });
 
-    socket.on("frame", (blob) => {
-        fs.writeFileSync("frame.jpg", blob); // Lưu frame vào file
-    });
+  
+  // Endpoint xử lý chat
+app.post("/api/chat", async (req, res) => {
+    try {
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: "user", content:"'"+ req.body.messages+"'" + ", you are a Vietnamese teacher english name's Enggram, please response simple by english and then explain your dificult vocabulary"}],
+            model: "gpt-4o-mini",
+        });
 
-    socket.on("disconnect", () => console.log("🔴 Client ngắt kết nối!"));
+        res.json(completion);
+    } catch (error) {
+      res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
 });
 
-// API cho Python lấy ảnh
-app.get("/frame", (req, res) => {
-    const img = fs.readFileSync("frame.jpg");
-    res.contentType("image/jpeg");
-    res.send(img);
+app.post("/api/trans", async (req, res) => {
+    let promt = ""
+    if(req.body.lang ==="en") promt = "'"+ req.body.messages+"'" + ", rewrite the sentence in English if it is grammatically incorrect or translate it into English if it is written in Vietnamese. And just type it.";
+    if(req.body.lang ==="vi") promt = "'"+ req.body.messages+"'" + ", translate it to Vietnamese, and just type Vietnamese tense"
+    try {
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: "user", content: promt}],
+            model: "gpt-4o-mini",
+        });
+
+        res.json(completion);
+    } catch (error) {
+      res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
 });
+
 
 server.listen(port, () => console.log(`🚀 WebSocket server chạy tại http://localhost:${port}`));

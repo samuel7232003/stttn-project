@@ -1,0 +1,139 @@
+.chatbot-main{
+    background-image: url("../../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin-top: -70px;
+    width: 100%;
+    padding: 70px 10px 10px 10px;
+    box-sizing: border-box;
+}
+
+.chatbot-main .main{
+    display: flex;
+    gap: 30px;
+    height: 100%;
+    justify-content: center;
+}
+
+.chatbot-main .chat{
+    background-color: #ffffff64;
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    height: 100%;
+    flex-grow: 1;
+    max-width: 1020px;
+    display: flex;
+    flex-flow: column;
+    overflow: hidden;
+}
+
+.chatbot-main .chat .title{
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    min-height: 60px;
+}
+
+.chatbot-main .chat .title figure{
+    height: 38px;
+}
+
+.chatbot-main .chat .title figure img{
+    height: 100%;
+    width: auto;
+}
+
+.chatbot-main .chat .title p{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.chatbot-main .chat .chat-list{
+    flex-grow: 1;
+    padding: 10px 20px;
+    overflow: auto;
+    position: relative;
+}
+
+.chatbot-main .chat .chat-list .note{
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    font-style: italic;
+    font-size: 14px;
+    color: #606060;
+}
+
+.chatbot-main .chat .chat-list ul{
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    list-style: none;
+}
+
+.chatbot-main .chat .chat-list li{
+    display: flex;
+}
+
+.chatbot-main .chat .chat-list div{
+    padding: 10px 20px;
+    width: fit-content;
+    max-width: 516px;
+    border-radius: 10px;
+    line-height: 1.5;
+}
+
+.chatbot-main .chat .chat-list .user{
+    justify-content: end;
+}
+
+.chatbot-main .chat .chat-list .user div{
+    background-color: #F7C1F7;
+}
+
+.chatbot-main .chat .chat-list .system div{
+    backdrop-filter: blur(5px);
+}
+
+.chatbot-main .chat .footer{
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+    background-color: #fff;
+    gap: 30px;
+}
+
+.chatbot-main .chat .footer fieldset{
+    flex-grow: 1;
+}
+
+.chatbot-main .chat .footer fieldset input{
+    width: 100%;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 58px;
+    border: none;
+    background-color: #d9d9d9;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.chatbot-main .chat .footer fieldset input::placeholder{
+    font-size: 14px;
+    font-style: italic;
+}
+
+.chatbot-main .chat .footer figure{
+    height: 35px;
+    width: 35px;
+}
+
+.chatbot-main .chat .footer figure img{
+    height: 100%;
+    width: auto;
+}

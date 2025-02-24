@@ -13,9 +13,18 @@ import left_icon from "./images/STTTN (2).png"
 import middle_icon from "./images/STTTN (3).png"
 import right1_icon from "./images/STTTN (4).png"
 import right2_icon from "./images/STTTN (5).png"
+import { useNavigate, useOutletContext } from "react-router-dom"
+import { useEffect } from "react"
 
 
 export default function Welcome(){
+    const {setCurPage}:any = useOutletContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        setCurPage("welcome");
+    },[])
+    
     return (
         <div className="welcome-main">
             <div className="hello-block">
@@ -35,7 +44,7 @@ export default function Welcome(){
                 </div>
             </div>
             <div className="bottom-block">
-                <div className="left-block">
+                <div className="left-block" onClick={() => navigate("/camera")}>
                     <figure className="back"><img src={left_back} alt="" /></figure>
                     <figure className="image"><img src={left_img} alt="" /></figure>
                     <div className="title">
@@ -44,7 +53,7 @@ export default function Welcome(){
                     </div>
                     <p className="try">Dùng ngay!</p>
                 </div>
-                <div className="middle-block">
+                <div className="middle-block" onClick={() => navigate("/chatbot")}>
                     <figure className="back"><img src={middle_back} alt="" /></figure>
                     <div className="title">
                         <figure><img src={middle_icon} alt="" /></figure>

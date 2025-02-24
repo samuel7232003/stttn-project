@@ -1,8 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { thunk } from "redux-thunk";
+import { messageSlice } from "./message/message.slice";
+import { transSlice } from "./trans/trans.slice";
 
 export const store = configureStore({
-    reducer: {},
+    reducer: {
+        message:messageSlice.reducer,
+        trans:transSlice.reducer
+    },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
 })
 
