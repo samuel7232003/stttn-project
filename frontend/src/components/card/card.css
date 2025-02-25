@@ -1,0 +1,82 @@
+.card-main{
+    position: relative;
+}
+
+.card-main .menu{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: #f7c1f777;
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-main .menu:hover{
+    opacity: 1;
+}
+
+.card-main .menu div{
+    width: 118px;
+    padding: 5px;
+    display: flex;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.card-main .menu div figure{
+    width: 19px;
+}
+
+.card-main .menu div figure img{
+    width: 100%;
+    height: auto;
+}
+
+.card-main .menu div p{
+    flex-grow: 1;
+    text-align: center;
+    line-height: 19px;
+}
+
+.card-main .menu div.learn{
+    border: 1px solid #00BF63;
+}
+
+.card-main .menu div.learn:hover{
+    background-color: #00bf6357;
+}
+
+.card-main .menu div.learn p{
+    color: #00BF63;
+}
+
+.card-main .menu div.edit{
+    border: 1px solid #EDF128;
+}
+
+.card-main .menu div.edit:hover{
+    background-color: #eef1284e;
+}
+
+.card-main .menu div.edit p{
+    color: #EDF128;
+}
+
+.card-main .menu div.delete{
+    border: 1px solid #F95454;
+}
+
+.card-main .menu div.delete:hover{
+    background-color: #f9545441;
+}
+
+.card-main .menu div.delete p{
+    color: #F95454;
+}

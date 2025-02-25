@@ -8,6 +8,8 @@ import { useOutletContext } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { useAppSelector } from "../../redux/builder"
 import { createNewFlashcard, getListFlashCard } from "../../service/flashcardService"
+import Card from "../../components/card/Card"
+import CardEdit from "../../components/cardedit/CardEdit"
 
 export default function Flashcard(){
     const {setCurPage}:any = useOutletContext();
@@ -15,6 +17,8 @@ export default function Flashcard(){
     const [listCardCur, setListCardCur] = useState([]); 
     const [listMyFlashcard, setListMyFlashcard] = useState([]);
     const [newName, setNewName] = useState("");
+    const [isEditMode, setIsEditMode] = useState(false);
+    const [flashcardEdit, setFlashcardEdit] = useState("");
 
     useEffect(() => {
         setCurPage("flashcard");
@@ -46,17 +50,13 @@ export default function Flashcard(){
         }
     }
     
-
     return(
         <div className="flashcard-main">
             <div className="sub" style={user._id===""?{flexDirection:"column-reverse"}:{}}>
                 <div className="your">
                     <p className="title">Các bộ flashcard của bạn:</p>
                     {user._id!==""?<ul>
-                        {listMyFlashcard.map((item:any) => <li key={item._id}>
-                            <p className="name">{item.name}</p>
-                            <p className="num">{item.done}/{item.sum}</p>
-                        </li>)}
+                        {listMyFlashcard.map((item:any) => <Card item={item} setIsEditMode={setIsEditMode} setFlashcardEdit={setFlashcardEdit}/>)}
                         <li className="last">
                             <figure><img src={add_icon} alt="" /></figure>
                             <p className="add">Thêm bộ flashcard</p>
@@ -101,6 +101,9 @@ export default function Flashcard(){
                     </ul>
                 </div>
             </div>
+            {isEditMode&&<div className="editmode">
+                <CardEdit flashcard={flashcardEdit}/>
+            </div>}
         </div>
     )
 }
