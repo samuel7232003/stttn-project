@@ -4,6 +4,7 @@ import cam_icon from "./images/camera-02.png";
 import detec_icon from "./images/image-focus.png";
 import { Tooltip } from 'antd';
 import { useOutletContext } from 'react-router-dom';
+import word from "../../data/word.json"
 
 export default function Camera() {
     const {setCurPage}:any = useOutletContext();
@@ -15,6 +16,13 @@ export default function Camera() {
     const [detections, setDetections] = useState<any[]>([]);
     const [mode, setMode] = useState<boolean>(true);
     const streamRef = useRef<MediaStream | null>(null);
+
+    function findWord(s: string){
+        const w:any = word.words.find((item)=> item.word===s);
+        if(w){
+            return w;
+        }
+    }
 
     useEffect(() => {
         setCurPage("camera");
@@ -49,7 +57,16 @@ export default function Camera() {
         const ctx = canvasRef.current.getContext("2d");
         if (!ctx) return;
 
-        ctx.drawImage(videoRef.current, 0, 0, 320, 240);
+        // Lấy kích thước thực tế của video
+        const videoWidth = videoRef.current.videoWidth;
+        const videoHeight = videoRef.current.videoHeight;
+
+        // Cập nhật kích thước canvas để khớp với video
+        canvasRef.current.width = videoWidth;
+        canvasRef.current.height = videoHeight;
+
+        // Vẽ ảnh mà không làm mất góc
+        ctx.drawImage(videoRef.current, 0, 0, videoWidth, videoHeight);
         
         canvasRef.current.toBlob((blob) => {
             if (blob) {
@@ -65,7 +82,7 @@ export default function Camera() {
                     }
                 };
             }
-        }, "image/jpeg", 0.7);
+        }, "image/jpeg", 0.9);
     };
 
     const startCamera = async () => {
@@ -78,7 +95,11 @@ export default function Camera() {
                     videoRef.current?.play().catch(error => console.error("❌ Lỗi play video:", error));
                 };
             }
-            sendFrameToServer();
+            const interval = setInterval(() => {
+                sendFrameToServer();
+            }, 800); // Gửi ảnh mỗi 500ms
+        
+            return () => clearInterval(interval);
         } catch (error) {
             console.error("❌ Lỗi mở camera:", error);
         }
@@ -91,22 +112,6 @@ export default function Camera() {
     function toggleMode() {
         setMode(prevMode => {
             const newMode = !prevMode;
-
-            if (newMode) {
-                // Khi chuyển về chế độ camera, mở lại camera nếu cần
-                if (!streamRef.current) {
-                    startCamera();
-                } else if (videoRef.current) {
-                    videoRef.current.srcObject = streamRef.current;
-                }
-            } else {
-                // Khi chuyển sang chế độ detection, dừng stream để tối ưu tài nguyên
-                if (streamRef.current) {
-                    streamRef.current.getTracks().forEach(track => track.stop());
-                    streamRef.current = null;
-                }
-            }
-
             return newMode;
         });
     }
@@ -118,7 +123,8 @@ export default function Camera() {
     return (
         <div className="camera-main">
             <div className='video'>
-                {mode ? <video ref={videoRef} autoPlay playsInline muted /> : processedImage ? <img src={processedImage} alt="Processed Video" key={processedImage} /> : <p>Loading...</p>}
+                <video ref={videoRef} autoPlay playsInline muted style={{height: !mode? "0":"100%"}}/>
+                {processedImage ? <img src={processedImage} alt="Processed Video" key={processedImage} /> : <p>Loading...</p>}
                 <canvas ref={canvasRef} style={{ display: "none" }} />
                 <Tooltip placement="topLeft" title={mode ? "Chuyển sang chế độ Detection" : "Chuyển sang chế độ thường"}>
                     <div className='mode' onClick={toggleMode}>
@@ -129,8 +135,10 @@ export default function Camera() {
             </div>
             <div className='voca'>
                 <ul>
-                    {detections.map((item) => <li className='item'>
+                    {detections.map((item, index) => <li key={index} className='item'>
                         <p className='word'>{item.label}</p>
+                        <p className='sym'>{findWord(item.label).sym}</p>
+                        <p className='mean'>{findWord(item.label).means}</p>
                     </li>)}
                 </ul>
             </div>

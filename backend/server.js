@@ -63,5 +63,5 @@ app.post("/api/trans", async (req, res) => {
     }
 });
 
-
+connection();
 server.listen(port, () => console.log(`🚀 WebSocket server chạy tại http://localhost:${port}`));

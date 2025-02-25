@@ -1,0 +1,123 @@
+.login-main{
+    background-image: url("../../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin-top: -70px;
+    width: 100%;
+    padding: 70px 10px 10px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-main .main{
+    width: 460px;
+    background-color: rgba(240, 248, 255, 0.482);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    display: flex;
+    flex-flow: column;
+
+}
+
+.login-main .main .title{
+    height: 48px;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    background-color: #fff;
+}
+
+.login-main .main .title p{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.login-main .title figure{
+    height: 218px;
+    transform: rotate(-14deg);
+    position: absolute;
+    top: -81px;
+    left: -75px;
+}
+
+.login-main .title figure img{
+    height: 100%;
+    width: auto;
+}
+
+.login-main .title p{
+    width: 100%;
+    text-align: center;
+    line-height: 48px;
+}
+
+.login-main .infor{
+    padding: 30px 50px;
+}
+
+.login-main .infor .fill{
+    height: 50px;
+    width: 100%;
+    margin: 10px 0 30px;
+}
+
+.login-main .infor .fill.name{
+    display: flex;
+    gap: 20px;
+}
+
+.login-main .infor .fill input{
+    height: 100%;
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 0 20px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.login-main .infor .fill input:hover{
+    background-color: #ffffffc2;
+}
+
+.login-main .infor .fill input::placeholder{
+    font-style: italic;
+    color: #707070;
+    font-size: 16px;
+}
+
+.login-main .infor .error{
+    color: #d00000;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.login-main .infor .btn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-main .infor .btn .option{
+    font-style: italic;
+    cursor: pointer;
+    color: #333333;
+}
+
+.login-main .infor .btn .button{
+    padding: 12px 20px 12px;
+    background-color: #F7C1F7;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+    color: #333333;
+}
+
+.login-main .infor .btn .button:hover{
+    background-color: #f7c1f7c4;
+}

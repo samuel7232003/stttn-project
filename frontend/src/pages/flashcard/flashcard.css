@@ -1,0 +1,291 @@
+.flashcard-main{
+    background-image: url("../../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -70px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.flashcard-main .sub{
+    max-width: 1020px;
+    padding: 70px 10px 10px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    flex-flow: column;
+}
+
+.flashcard-main .your{
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #ffffffa8;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.flashcard-main .your .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.flashcard-main .your ul{
+    display: flex;
+    gap: 20px;
+    width: max-content;
+}
+
+.flashcard-main .your ul li{
+    height: 133px;
+    width: 233px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.flashcard-main .your ul li .name{
+    font-size: 20px;
+}
+
+.flashcard-main .your ul li .num{
+    color: #00BF63;
+    font-style: italic;
+}
+
+.flashcard-main .your ul li.last{
+    border: 1px dashed #000;
+    position: relative;
+}
+
+.flashcard-main .your ul li.last figure{
+    height: 24px;
+}
+
+.flashcard-main .your ul li.last figure img{
+    height: 100%;
+    width: auto;
+}
+
+.flashcard-main .your ul li.last .add{
+    font-style: italic;
+}
+
+.flashcard-main .your ul li.last .edit{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7c1f777;
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.flashcard-main .your ul li.last .edit input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.flashcard-main .your ul li.last .edit p{
+    font-size: 14px;
+    padding: 3px 4px 2px;
+    background-color: #f7c1f7;
+    border-radius: 3px;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.flashcard-main .your ul li.last .edit p:hover{
+    background-color: #a269a2;
+    color: #fff;
+}
+
+.flashcard-main .your ul li.last .edit:hover{
+    opacity: 1;
+}
+
+.flashcard-main .your .note{
+    font-style: italic;
+    margin: 10px 0; 
+}
+
+.flashcard-main .main{
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.flashcard-main .main .title{
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 60px;
+}
+
+.flashcard-main .main .learn{
+    display: flex;
+    align-items: center;
+}
+
+.flashcard-main .main .learn > figure{
+    height: 50px;
+    margin: 0 30px;
+}
+
+.flashcard-main .main .learn > figure > img{
+    height: 100%;
+    width: auto;
+}
+
+.flashcard-main .main .learn .card{
+    position: relative;
+    height: 371px;
+    width: 657px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 30px;
+    padding: 20px;
+}
+
+.flashcard-main .card .content{
+    font-size: 50px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.flashcard-main .card .takenote{
+    font-size: 24px;
+    font-style: italic;
+}
+
+.flashcard-main .card .hand{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+}
+
+.flashcard-main .card .num{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+}
+
+.flashcard-main .card .btn{
+    position: absolute;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 43px;
+    border: 1px solid #00BF63;
+    border-radius: 5px;
+    padding: 0 10px;
+    bottom: 10px;
+}
+
+.flashcard-main .card .btn figure{
+    height: 24px;
+}
+
+.flashcard-main .card .btn figure img{
+    height: 100%;
+    width: auto;
+}
+
+.flashcard-main .card .btn p{
+    color: #00BF63;
+}
+
+.flashcard-main .main .setting{
+    position: absolute;
+    height: 38px;
+    top: 5px;
+    right: 10px;
+}
+
+.flashcard-main .main .setting img{
+    height: 100%;
+    width: auto;
+}
+
+.flashcard-main .orther{
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #ffffffa8;
+    backdrop-filter: blur(5px);
+    padding: 20px;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.flashcard-main .orther .title{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.flashcard-main .orther ul{
+    display: flex;
+    gap: 20px;
+    width: max-content;
+}
+
+.flashcard-main .orther ul li{
+    height: 133px;
+    width: 233px;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.flashcard-main .orther ul li .name{
+    font-size: 20px;
+}
+
+.flashcard-main .orther ul li .num{
+    color: #00BF63;
+    font-style: italic;
+}
+
+.flashcard-main .orther .see{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7c1f777;
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.flashcard-main .orther .see:hover{
+    opacity: 1;
+}

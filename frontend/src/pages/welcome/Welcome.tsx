@@ -15,11 +15,18 @@ import right1_icon from "./images/STTTN (4).png"
 import right2_icon from "./images/STTTN (5).png"
 import { useNavigate, useOutletContext } from "react-router-dom"
 import { useEffect } from "react"
+import idiom from "../../data/idiom.json"
 
 
 export default function Welcome(){
     const {setCurPage}:any = useOutletContext();
     const navigate = useNavigate();
+
+    const getRandomIdiom = () =>{
+        const i:number = Math.floor(Math.random() * 50) + 1;
+        const idi:any = idiom.idioms.find(item => item.id === i);
+        return '"'+ idi.content +'" - '+idi.means;
+    } 
 
     useEffect(() => {
         setCurPage("welcome");
@@ -31,7 +38,7 @@ export default function Welcome(){
                 <figure className="back"><img src={hello_back} alt="" /></figure>
                 <div className="idiom">
                     <p className="title">Idiom of the day</p>
-                    <p className="content">“Keep your nose to the grindstone.” - Làm việc chăm chỉ trong một khoảng thời gian dài</p>
+                    <p className="content">{getRandomIdiom()}</p>
                 </div>
                 <div className="hello">
                     <figure className="image">
@@ -63,7 +70,7 @@ export default function Welcome(){
                     <p className="try">Dùng ngay!</p>
                 </div>
                 <div className="right-block">
-                    <div className="right1-block">
+                    <div className="right1-block" onClick={() => navigate("/flashcard")}>
                         <figure className="back"><img src={right1_back} alt="" /></figure>
                         <figure className="image"><img src={right1_img} alt="" /></figure>
                         <div className="title">
