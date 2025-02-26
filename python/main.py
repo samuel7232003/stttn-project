@@ -80,5 +80,5 @@ async def websocket_endpoint(websocket: WebSocket):
 import os
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render sẽ gán PORT tự động
+    port = int(os.environ.get("PORT", 10000))  # Lấy PORT do Render cấp
     uvicorn.run(app, host="0.0.0.0", port=port)
