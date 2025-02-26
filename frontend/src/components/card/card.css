@@ -49,10 +49,6 @@
     border: 1px solid #00BF63;
 }
 
-.card-main .menu div.learn:hover{
-    background-color: #00bf6357;
-}
-
 .card-main .menu div.learn p{
     color: #00BF63;
 }
@@ -61,20 +57,12 @@
     border: 1px solid #EDF128;
 }
 
-.card-main .menu div.edit:hover{
-    background-color: #eef1284e;
-}
-
 .card-main .menu div.edit p{
     color: #EDF128;
 }
 
 .card-main .menu div.delete{
     border: 1px solid #F95454;
-}
-
-.card-main .menu div.delete:hover{
-    background-color: #f9545441;
 }
 
 .card-main .menu div.delete p{

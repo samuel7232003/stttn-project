@@ -28,7 +28,7 @@ const addFlashcardService = async(name, idUser)=>{
 
 const editNumFlashcardService = async(id, type) =>{
     try{
-        const flashcard = await flashcardModel.find({_id: id});
+        const flashcard = await flashcardModel.findOne({_id: id});
         if(type === "add"){
             const response = await flashcardModel.replaceOne(
                 {_id: id},
@@ -79,6 +79,30 @@ const editNumFlashcardService = async(id, type) =>{
     }
 }
 
+const editFlashcardService = async (newFlashcard) => {
+    try {
+        const { _id, ...updateData } = newFlashcard;
+        const response = await flashcardModel.updateOne(
+            { _id },
+            { $set: updateData }
+        );
+        return response;
+    } catch (error) {
+        console.error("Error updating flashcard:", error);
+        return null;
+    }
+};
+
+const deleteFlashcardService = async(id)=>{
+    try {
+        const result = await flashcardModel.deleteOne({_id:id});
+        return result;
+    } catch (error) {
+        console.error("Error replacing cards with new list:", error);
+        return null;
+    }
+}
+
 module.exports = {
-    getListFlashcardService, addFlashcardService, editNumFlashcardService
+    getListFlashcardService, addFlashcardService, editNumFlashcardService, editFlashcardService,deleteFlashcardService
 }

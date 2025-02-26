@@ -139,11 +139,13 @@
 .flashcard-main .main .learn{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .flashcard-main .main .learn > figure{
     height: 50px;
     margin: 0 30px;
+    cursor: pointer;
 }
 
 .flashcard-main .main .learn > figure > img{
@@ -163,6 +165,14 @@
     align-items: center;
     margin: 0 30px;
     padding: 20px;
+    flex-flow: column;
+    gap: 10px
+}
+
+.flashcard-main .card .takenote{
+    font-size: 26px;
+    font-style: italic;
+    color: #c6c6c6;
 }
 
 .flashcard-main .card .content{
@@ -181,6 +191,13 @@
     top: 20px;
     left: 20px;
     font-size: 24px;
+    cursor: pointer;
+}
+
+.flashcard-main .card .hand img{
+    height: 16px;
+    width: auto;
+    margin-left: 8px;
 }
 
 .flashcard-main .card .num{
@@ -200,6 +217,16 @@
     border-radius: 5px;
     padding: 0 10px;
     bottom: 10px;
+    transition: background-color 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.flashcard-main .card .btn.done{
+    background-color: #cfffe8;
+}
+
+.flashcard-main .card .btn:hover{
+    background-color: #7fddaf;
 }
 
 .flashcard-main .card .btn figure{

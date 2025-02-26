@@ -1,4 +1,5 @@
-const { getListFlashcardService, addFlashcardService, editNumFlashcardService } = require("../services/flashcardService");
+const { deleteAllCardService } = require("../services/cardService");
+const { getListFlashcardService, addFlashcardService, editNumFlashcardService, deleteFlashcardService } = require("../services/flashcardService");
 
 
 const getListFlashcard = async(req, res)=>{
@@ -19,6 +20,13 @@ const editNumFlashcard = async(req, res)=>{
     return res.status(200).json(response);
 }
 
+const deleteFlashCard = async(req, res)=>{
+    const {id} = req.query;
+    const response = await deleteFlashcardService(id);
+    await deleteAllCardService(id);
+    return res.status(200).json(response);
+}
+
 module.exports = {
-    getListFlashcard, addFlashcard, editNumFlashcard
+    getListFlashcard, addFlashcard, editNumFlashcard, deleteFlashCard
 }

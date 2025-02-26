@@ -17,3 +17,12 @@ export async function createNewFlashcard(name: string, idUser: string) {
         throw error
     }
 }
+
+export async function deleteFlashcard(id:string) {
+    try {
+        const respone = await apiInstance.get(`/deleteFlashcard?id=${id}`);
+        return respone;
+    } catch (error) {
+        throw error
+    }
+}

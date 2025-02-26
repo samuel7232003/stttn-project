@@ -7,7 +7,7 @@ const cardSchema = mongoose.Schema({
     back_note: String,
     status: Boolean,
     no:Number,
-    idFlashCard: String
+    idFlashcard: String
 })
 
 const cardModel = mongoose.model("Card", cardSchema)

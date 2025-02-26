@@ -1,0 +1,156 @@
+.cardedit-main{
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #c6c6c6;
+}
+
+.cardedit-main .title{
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+    padding: 20px 0;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid #000;
+}
+
+.cardedit-main .title p{
+    font-size: 20px;
+}
+
+.cardedit-main .title p.name{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.cardedit-main .title figure{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 24px;
+    transition: transform 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.cardedit-main .title figure:hover{
+    transform: rotate(180deg);
+}
+
+.cardedit-main .title figure img{
+    height: 100%;
+    width: auto;
+}
+
+.cardedit-main .main-box{
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+}
+
+.cardedit-main .main-box .table{
+    width: 654px;
+    height: 450px;
+}
+
+.cardedit-main .main-box .btn{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+}
+
+.cardedit-main .main-box .btn .top{
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+.cardedit-main .main-box .btn .top div,
+.cardedit-main .main-box .btn .save{
+    width: 116px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 10px 5px;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+    box-sizing: border-box;
+}
+
+
+.cardedit-main .main-box .btn .top div figure,
+.cardedit-main .main-box .btn .save figure{
+    height: 16px;
+    
+}
+
+.cardedit-main .main-box .btn .top div figure img,
+.cardedit-main .main-box .btn .save figure img{
+    height: 100%;
+    width: auto;
+}
+
+.cardedit-main .main-box .btn .top .sort{
+    border: 2px solid #FF6FFF;
+}
+
+.cardedit-main .main-box .btn .top .delete{
+    border: 2px solid #F95454;
+}
+
+.cardedit-main .main-box .btn .add{
+    border: 2px solid #00BF63;
+}
+
+.cardedit-main .main-box .btn .top .sort p{
+    color: #FF6FFF;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.cardedit-main .main-box .btn .top .delete p{
+    color: #F95454;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.cardedit-main .main-box .btn .add p{
+    color: #00BF63;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.cardedit-main .main-box .btn .save{
+    background-color: #00BF63;
+    padding: 10px 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.25s ease-in-out;
+}
+
+.cardedit-main .main-box .btn .save p{
+    color: white;
+    flex-grow: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cardedit-main .main-box .btn .save:hover{
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.ant-table-container  {
+    background-color: #e3e3e3;
+} 
+
+.ant-table-wrapper .ant-table-tbody >tr >td {
+    height: 50px;
+}
+
+.ant-table-wrapper .delete_icon{
+    height: 16px;
+    cursor: pointer;
+}
+
+.ant-table-wrapper .delete_icon img{
+    height: 100%;
+    width: auto;
+}

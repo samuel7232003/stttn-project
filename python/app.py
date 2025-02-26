@@ -14,7 +14,7 @@ app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
 
 # Load mô hình YOLO
-model = YOLO("yolov8n.pt")  # Tải YOLOv8 model (có thể thay bằng yolov8s.pt, yolov8m.pt...)
+model = YOLO("yolov8n-oiv7.pt")  # Tải YOLOv8 model (có thể thay bằng yolov8s.pt, yolov8m.pt...)
 model.export(format="onnx")
 
 @app.websocket("/ws")
@@ -77,6 +77,8 @@ async def websocket_endpoint(websocket: WebSocket):
         print("❌ Client đã ngắt kết nối!")
 
 
-# Chạy server
+import os
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 10000))  # Render sẽ gán PORT tự động
+    uvicorn.run(app, host="0.0.0.0", port=port)
