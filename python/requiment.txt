@@ -3,3 +3,6 @@ uvicorn
 numpy
 opencv-python
 ultralytics
+onnx>=1.12.0
+onnxslim
+onnxruntime
