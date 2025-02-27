@@ -137,3 +137,22 @@
     height: 100%;
     width: auto;
 }
+
+@media screen and (max-width: 440px) {
+    .chatbot-main .chat .title{
+        min-height: 50px;
+    }
+
+    .chatbot-main .chat .title p{
+        font-size: 16px;
+    }
+
+    .chatbot-main .chat .title figure{
+        height: 30px;
+    }
+
+    .chatbot-main .chat .footer{
+        gap: 10px;
+        padding: 0 10px;
+    }
+}

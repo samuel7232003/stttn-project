@@ -96,3 +96,33 @@
     height: 20px;
     width: auto;
 }
+
+@media screen and (max-width: 440px) {
+    .camera-main{
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .camera-main .voca{
+        box-sizing: border-box;
+        min-height: 124px;
+    }
+
+    .camera-main .voca ul .item{
+        width: 156px;
+        gap: 5px;
+        padding: 20px;
+    }
+
+    .camera-main .voca .word{
+        font-size: 16px;
+    }
+
+    .camera-main .voca .sym{
+        font-size: 14px;
+    }
+
+    .camera-main .voca .mean{
+        font-size: 16px;
+    }
+}
