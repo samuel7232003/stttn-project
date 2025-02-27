@@ -329,3 +329,59 @@
     justify-content: center;
     align-items: center;
 }
+
+@media screen and (max-width: 440px) {
+    .flashcard-main .main .learn .card{
+        height: 184px;
+        width: 312px;
+        margin: 0 20px;
+    }
+
+    .flashcard-main .main .learn > figure{
+        height: 20px;
+        margin: 0;
+    }
+
+    .flashcard-main .card .num,
+    .flashcard-main .card .hand{
+        font-size: 16px;
+    }
+
+    .flashcard-main .card .content{
+        font-size: 30px;
+        margin-bottom: 5px;
+    }
+
+    .flashcard-main .card .hand img {
+        height: 12px;
+    }
+
+    .flashcard-main .card .btn figure{
+        height: 20px;
+    }
+
+    .flashcard-main .card .takenote{
+        font-size: 24px;
+    }
+
+    .flashcard-main .card .btn p{
+        font-size: 12px;
+    }
+
+    .flashcard-main .card .btn{
+        height: 32px;
+    }
+
+    .flashcard-main .editmode{
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    .cardedit-main{
+        width: 100%;
+    }
+
+    .cardedit-main .main-box{
+        flex-flow: column;
+    }
+}

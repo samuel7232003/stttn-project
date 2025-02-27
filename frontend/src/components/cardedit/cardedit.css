@@ -154,3 +154,54 @@
     height: 100%;
     width: auto;
 }
+
+
+@media screen and (max-width:440px) {
+
+    .cardedit-main .title p.name,
+    .cardedit-main .title p{
+        font-size: 16px;
+    }
+
+    .cardedit-main .title{
+        padding: 10px 0;
+    }
+
+    .cardedit-main .main-box .table{
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .cardedit-main .main-box .btn .top{
+        flex-flow: row;
+    }
+
+    .ant-table-wrapper .ant-table-thead >tr>th{
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .ant-table-wrapper .ant-table-tbody >tr >td {
+        padding: 2px;
+        height: auto;
+    }
+
+    .ant-input {
+        font-size: 14px;
+    }
+
+    .cardedit-main .main-box .btn{
+        gap: 10px
+    }
+
+    .cardedit-main .main-box .btn .top div, .cardedit-main .main-box .btn .save{
+        padding: 5px;
+        width: 105px;
+    }
+
+    .cardedit-main .main-box .btn .add p,
+    .cardedit-main .main-box .btn .top .sort p,
+    .cardedit-main .main-box .btn .top .delete p{
+        font-size: 14px;
+    }
+}

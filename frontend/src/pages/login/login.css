@@ -121,3 +121,13 @@
 .login-main .infor .btn .button:hover{
     background-color: #f7c1f7c4;
 }
+
+@media screen and (max-width: 440px) {
+    .login-main .infor .fill.name{
+        gap: 5px;
+    }
+
+    .login-main .infor .fill{
+        margin: 10px 0 20px;
+    }
+}

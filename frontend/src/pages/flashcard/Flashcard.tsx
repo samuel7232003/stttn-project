@@ -109,9 +109,9 @@ export default function Flashcard(){
                 </div>
                 {(listCardCur.length>0&&flashcardCur)&&<div className="main">
                     <p className="title">{flashcardCur.name}</p>
-                    <div className="learn" onClick={() => setModeCard(!modeCard)}>
+                    <div className="learn">
                         <figure className="back" onClick={handleBack}><img src={back_icon} alt="" /></figure>
-                        {cardCur&&<div className="card">
+                        {cardCur&&<div className="card"  onClick={() => setModeCard(!modeCard)}>
                             <p className="hand" >{modeCard?"Mặt trước":"Mặt sau"}<img src={next_icon} alt="" /></p>
                             <p className="num">{cardCur.no}/{flashcardCur.sum}</p>
                             <p className="content">{modeCard?cardCur.front:cardCur.back}</p>
