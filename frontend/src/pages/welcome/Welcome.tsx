@@ -35,7 +35,7 @@ export default function Welcome(){
     return (
         <div className="welcome-main">
             <div className="hello-block">
-                <figure className="back"><img src={hello_back} alt="" /></figure>
+                <figure className="back"></figure>
                 <div className="idiom">
                     <p className="title">Idiom of the day</p>
                     <p className="content">{getRandomIdiom()}</p>
@@ -52,7 +52,7 @@ export default function Welcome(){
             </div>
             <div className="bottom-block">
                 <div className="left-block" onClick={() => navigate("/camera")}>
-                    <figure className="back"><img src={left_back} alt="" /></figure>
+                    <figure className="back"></figure>
                     <figure className="image"><img src={left_img} alt="" /></figure>
                     <div className="title">
                         <figure><img src={left_icon} alt="" /></figure>
@@ -61,7 +61,7 @@ export default function Welcome(){
                     <p className="try">Dùng ngay!</p>
                 </div>
                 <div className="middle-block" onClick={() => navigate("/chatbot")}>
-                    <figure className="back"><img src={middle_back} alt="" /></figure>
+                    <figure className="back"></figure>
                     <div className="title">
                         <figure><img src={middle_icon} alt="" /></figure>
                         <p>Trò chuyện bằng Tiếng Anh mỗi ngày với Enggram Chatbot</p>
@@ -71,7 +71,7 @@ export default function Welcome(){
                 </div>
                 <div className="right-block">
                     <div className="right1-block" onClick={() => navigate("/flashcard")}>
-                        <figure className="back"><img src={right1_back} alt="" /></figure>
+                        <figure className="back"></figure>
                         <figure className="image"><img src={right1_img} alt="" /></figure>
                         <div className="title">
                             <figure><img src={right1_icon} alt="" /></figure>
@@ -80,7 +80,7 @@ export default function Welcome(){
                         <p className="try">Dùng ngay!</p>
                     </div>
                     <div className="right2-block">
-                        <figure className="back"><img src={right2_back} alt="" /></figure>
+                        <figure className="back"></figure>
                         <figure className="image"><img src={right2_img} alt="" /></figure>
                         <div className="title">
                             <figure><img src={right2_icon} alt="" /></figure>
