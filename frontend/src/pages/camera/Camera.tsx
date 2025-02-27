@@ -26,7 +26,7 @@ export default function Camera() {
 
     useEffect(() => {
         setCurPage("camera");
-        wsRef.current = new WebSocket("ws://a37c-14-236-19-117.ngrok-free.app/ws");
+        wsRef.current = new WebSocket("wss://a37c-14-236-19-117.ngrok-free.app/ws");
 
         wsRef.current.onopen = () => console.log("✅ WebSocket đã kết nối!");
         wsRef.current.onmessage = (event) => {
