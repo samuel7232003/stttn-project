@@ -26,7 +26,7 @@ export default function Camera() {
 
     useEffect(() => {
         setCurPage("camera");
-        wsRef.current = new WebSocket(`wss://103.121.91.217:10000/ws`);
+        wsRef.current = new WebSocket(`wss://${process.env.REACT_APP_BASE_PYTHON}/ws`);
 
         wsRef.current.onopen = () => console.log("✅ WebSocket đã kết nối!!!!!!!");
         wsRef.current.onmessage = (event) => {
