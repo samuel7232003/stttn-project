@@ -38,9 +38,9 @@ export default function Header({curPage} :Props) {
             <nav>
                 <ul>
                     <li className={curPage==="welcome"?"select":""}><a href="/">TRANG CHỦ</a></li>
-                    <li className={curPage==="camera"?"select":""}><a href="/camera">CAMERA TỪ VỰNG</a><p>AI</p></li>
-                    <li className={curPage==="chatbot"?"select":""}><a href="/chatbot">CHATBOT</a><p>AI</p></li>
-                    <li className={curPage==="flashcard"?"select":""}><a href="/flashcard">FLASHCARD</a></li>
+                    <li className={curPage==="camera"?"select":""}><a href="./camera">CAMERA TỪ VỰNG</a><p>AI</p></li>
+                    <li className={curPage==="chatbot"?"select":""}><a href="./chatbot">CHATBOT</a><p>AI</p></li>
+                    <li className={curPage==="flashcard"?"select":""}><a href="./flashcard">FLASHCARD</a></li>
                     <li className={curPage==="readbook"?"select":""}><a href="/">ĐỌC SÁCH</a></li>
                 </ul>
             </nav>
