@@ -1,4 +1,4 @@
-import { JSX, useEffect, useRef, useState } from "react";
+import { JSX, useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import "./chatbot.css"
 import chat_icon from "./images/message-chat-01.png"
