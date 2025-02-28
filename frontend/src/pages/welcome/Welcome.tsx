@@ -1,10 +1,5 @@
 import "./welcome.css"
-import hello_back from "./images/Rectangle 6.png"
 import hello_img from "./images/STTTN (1).png"
-import left_back from "./images/Rectangle 9.png"
-import middle_back from "./images/Rectangle 8.png"
-import right1_back from "./images/Rectangle 9 (1).png"
-import right2_back from "./images/Rectangle 10.png"
 import left_img from "./images/image 1.png"
 import middle_img from "./images/image 2.png"
 import right1_img from "./images/image 3.png"
@@ -30,6 +25,7 @@ export default function Welcome(){
 
     useEffect(() => {
         setCurPage("welcome");
+        // eslint-disable-next-line
     },[])
     
     return (

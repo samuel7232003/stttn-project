@@ -26,6 +26,7 @@ export default function Flashcard(){
 
     useEffect(() => {
         setCurPage("flashcard");
+        // eslint-disable-next-line
     },[])
 
     useEffect(() => {
@@ -42,7 +43,7 @@ export default function Flashcard(){
 
     function addFlashcard(){
         async function addFlash() {
-            const res = await createNewFlashcard(newName.trim(), user._id);
+            await createNewFlashcard(newName.trim(), user._id);
         }
         if(newName.trim()!==""){
             try {

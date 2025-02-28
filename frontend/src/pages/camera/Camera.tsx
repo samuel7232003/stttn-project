@@ -26,7 +26,7 @@ export default function Camera() {
 
     useEffect(() => {
         setCurPage("camera");
-        wsRef.current = new WebSocket("wss://a37c-14-236-19-117.ngrok-free.app/ws");
+        wsRef.current = new WebSocket(`wss://${process.env.REACT_APP_BASE_PYTHON}/ws`);
 
         wsRef.current.onopen = () => console.log("✅ WebSocket đã kết nối!");
         wsRef.current.onmessage = (event) => {
@@ -49,6 +49,7 @@ export default function Camera() {
         return () => {
             wsRef.current?.close();
         };
+        // eslint-disable-next-line
     }, []);
 
     const sendFrameToServer = async () => {
@@ -107,6 +108,7 @@ export default function Camera() {
 
     useEffect(() => {
         startCamera();
+        // eslint-disable-next-line
     }, []);
 
     function toggleMode() {
@@ -115,10 +117,6 @@ export default function Camera() {
             return newMode;
         });
     }
-
-    useEffect(() => {
-        console.log(detections);
-    }, [detections]);
 
     return (
         <div className="camera-main">

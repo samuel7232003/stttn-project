@@ -21,6 +21,7 @@ export default function Header({curPage} :Props) {
             await dispatch(getProfile());
         }
         if(token) fectchData()
+        // eslint-disable-next-line
     }, [])
 
     function handleLogout(){

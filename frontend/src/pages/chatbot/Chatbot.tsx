@@ -23,6 +23,7 @@ export default function Chatbot(){
     useEffect(() =>{
         setCurPage("chatbot");
         document.getElementById("chat")?.focus();
+        // eslint-disable-next-line
     },[])
 
     useEffect(()=>{

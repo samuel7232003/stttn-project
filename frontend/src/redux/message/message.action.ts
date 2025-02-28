@@ -4,7 +4,6 @@ import { AnyAction } from "@reduxjs/toolkit";
 import { Message } from "./message.stage";
 import { messageSlice } from "./message.slice";
 import { sendMessageServer} from "../../service/messageService"
-import { addTrans } from "../trans/trans.action";
 
 export const messageAction = messageSlice.actions;
 

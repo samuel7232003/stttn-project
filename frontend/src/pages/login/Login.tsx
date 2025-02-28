@@ -27,6 +27,7 @@ export default function Login(){
         document.querySelectorAll("input").forEach(input => {
             input.setAttribute("autocomplete", "new-password");
         });
+        // eslint-disable-next-line
     }, []);
 
     function handleLogin(){
