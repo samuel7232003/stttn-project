@@ -118,6 +118,17 @@ export default function Camera() {
         });
     }
 
+    const listDetec = (detections:any[]) :any => {
+        const map = new Map();
+        detections.forEach(obj => {
+            const w = findWord(obj.label);
+            if (!map.has(w.id)) {
+                map.set(w.id, w);
+            }
+        });
+        return Array.from(map.values());
+    }
+
     return (
         <div className="camera-main">
             <div className='video'>
@@ -133,10 +144,10 @@ export default function Camera() {
             </div>
             <div className='voca'>
                 <ul>
-                    {detections.map((item, index) => <li key={index} className='item'>
-                        <p className='word'>{item.label}</p>
-                        <p className='sym'>{findWord(item.label).sym}</p>
-                        <p className='mean'>{findWord(item.label).means}</p>
+                    {listDetec(detections).map((item:any, index:number) => <li key={index} className='item'>
+                        <p className='word'>{item.word}</p>
+                        <p className='sym'>{item.sym}</p>
+                        <p className='mean'>{item.means}</p>
                     </li>)}
                 </ul>
             </div>

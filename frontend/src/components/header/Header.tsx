@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/builder";
 import { getProfile, logout } from "../../redux/user/user.action";
 import { useEffect } from "react";
+import { message } from "antd";
 
 interface Props{
     curPage :string;
@@ -41,7 +42,8 @@ export default function Header({curPage} :Props) {
                     <li className={curPage==="camera"?"select":""}><a href="./camera">CAMERA TỪ VỰNG</a><p>AI</p></li>
                     <li className={curPage==="chatbot"?"select":""}><a href="./chatbot">CHATBOT</a><p>AI</p></li>
                     <li className={curPage==="flashcard"?"select":""}><a href="./flashcard">FLASHCARD</a></li>
-                    <li className={curPage==="readbook"?"select":""}><a href="/">ĐỌC SÁCH</a></li>
+                    {/* eslint-disable-next-line */}
+                    <li className={curPage==="readbook"?"select":""}><a onClick={() => message.info("Tính năng đang trong quá trình phát triển...")}>ĐỌC SÁCH</a></li>
                 </ul>
             </nav>
             <div className="right">

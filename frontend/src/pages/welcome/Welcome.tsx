@@ -11,6 +11,7 @@ import right2_icon from "./images/STTTN (5).png"
 import { useNavigate, useOutletContext } from "react-router-dom"
 import { useEffect } from "react"
 import idiom from "../../data/idiom.json"
+import { message } from "antd"
 
 
 export default function Welcome(){
@@ -78,7 +79,7 @@ export default function Welcome(){
                         </div>
                         <p className="try">Dùng ngay!</p>
                     </div>
-                    <div className="right2-block">
+                    <div className="right2-block" onClick={() => message.info("Tính năng đang trong quá trình phát triển...")}>
                         <figure className="back"></figure>
                         <figure className="image"><img src={right2_img} alt="" /></figure>
                         <div className="title">
