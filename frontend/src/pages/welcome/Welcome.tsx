@@ -52,7 +52,8 @@ export default function Welcome(){
                     <figure className="image"><img src={left_img} alt="" /></figure>
                     <div className="title">
                         <figure><img src={left_icon} alt="" /></figure>
-                        <p>Học Tiếng Anh bất kì nơi đâu với Camera từ vựng</p>
+                        <p className="lap">Học Tiếng Anh bất kì nơi đâu với Camera từ vựng</p>
+                        <p className="mobile">Camera Từ vựng</p>
                     </div>
                     <p className="try">Dùng ngay!</p>
                 </div>
@@ -60,7 +61,8 @@ export default function Welcome(){
                     <figure className="back"></figure>
                     <div className="title">
                         <figure><img src={middle_icon} alt="" /></figure>
-                        <p>Trò chuyện bằng Tiếng Anh mỗi ngày với Enggram Chatbot</p>
+                        <p className="lap">Trò chuyện bằng Tiếng Anh mỗi ngày với Enggram Chatbot</p>
+                        <p className="mobile">Chatbot Enggram</p>
                     </div>
                     <figure className="image"><img src={middle_img} alt="" /></figure>
                     <p className="try">Dùng ngay!</p>
@@ -71,7 +73,8 @@ export default function Welcome(){
                         <figure className="image"><img src={right1_img} alt="" /></figure>
                         <div className="title">
                             <figure><img src={right1_icon} alt="" /></figure>
-                            <p>Tạo Flashcard theo cách của riêng bạn</p>
+                            <p className="lap">Tạo Flashcard theo cách của riêng bạn</p>
+                            <p className="mobile">Flashcard</p>
                         </div>
                         <p className="try">Dùng ngay!</p>
                     </div>
@@ -80,7 +83,8 @@ export default function Welcome(){
                         <figure className="image"><img src={right2_img} alt="" /></figure>
                         <div className="title">
                             <figure><img src={right2_icon} alt="" /></figure>
-                            <p>Đọc sách Tiếng Anh mỗi ngày với Enggram</p>
+                            <p className="lap">Đọc sách Tiếng Anh mỗi ngày với Enggram</p>
+                            <p className="mobile">Đọc sách</p>
                         </div>
                         <p className="try">Dùng ngay!</p>
                     </div>

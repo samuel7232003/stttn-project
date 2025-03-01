@@ -2,9 +2,18 @@
     min-width: 1024px;
 }
 
+.main-bottom{
+    padding-top: 70px;
+}
+
 @media screen and (max-width: 440px) {
     .home-main{
         min-width: auto;
     }
+
+    .main-bottom{
+        padding-top: 55px;
+    }
+    
 }
 

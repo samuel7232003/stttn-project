@@ -160,6 +160,7 @@
         padding: 0 10px;
         justify-content: space-between;
         align-items: center;
+        height: 55px;
     }
 
     .header-main nav{
@@ -173,5 +174,13 @@
         justify-content: center;
         line-height: 20px;
         text-align: center;
+    }
+
+    .header-main .right .search{
+        width: 30px;
+    }
+
+    .header-main .search input::placeholder{
+        visibility: hidden;
     }
 }

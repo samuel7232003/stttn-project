@@ -9,7 +9,7 @@ export default function Home(){
     return (
         <div className="home-main">
             <Header curPage={curPage}/>
-            <div style={{paddingTop: "70px"}}>
+            <div className="main-bottom" style={{}}>
                 <Outlet context={{setCurPage}}/>
             </div>
         </div>

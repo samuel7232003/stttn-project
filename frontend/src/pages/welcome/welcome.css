@@ -329,40 +329,64 @@
     transform: rotate(0deg);
 }
 
+.mobile{
+    display: none;
+}
+
 @media screen and (max-width: 440px) {
+    .lap{
+        display: none;
+    }
+
+    .mobile{
+        display: block;
+    }
+
     .welcome-main{
         width: 100%;
+        max-width: 395px;
         overflow: hidden;
+        padding-bottom: 10px;
     }
 
     .welcome-main .hello-block{
-        margin-bottom: 35px;
+        margin-bottom: 0px;
     }
 
     .welcome-main .hello-block .back{
         background-image: url("./images/mobile1.png");
-        height: 386px;
+        height: 260px;
     }
 
     .welcome-main .hello-block .idiom {
-        max-width: 330px;
+        max-width: 250px;
     }
 
+    .welcome-main .hello-block .idiom .title{
+        font-size: 12px;
+        left: 30px;
+        top: -6px;
+    }
+    
     .welcome-main .hello-block .idiom .content{
         line-height: 21px;
+        font-size: 12px;
+        padding: 5px 15px 3px;
     }
 
     .welcome-main .hello-block .hello{
-        margin-top: -40px;
+        margin-top: -22px;
     }
 
     .welcome-main .hello-block .hello .image {
-        margin-left: -97px;
-        margin-right: -70px;
+        margin-left: -57px;
+        margin-right: -40px;
+        height: 230px;
     }
 
     .welcome-main .hello-block .hello .text p:first-child {
         font-size: 16px;
+        margin-bottom: 15px;
     }
 
     .welcome-main .hello-block .hello .text p:last-child {
@@ -371,60 +395,102 @@
     }
 
     .welcome-main .bottom-block{
-        flex-flow: column;
-        gap: 100px;
+        gap: 0px;
+        flex-wrap: wrap;
     }
 
-    .welcome-main .bottom-block .left-block {
-        width: 100%;
+    .welcome-main .bottom-block .title{
+        padding: 8px 10px 6px;
+        width: auto;
+        margin: 0;
+    }
+
+    .welcome-main .bottom-block .title p{
+        margin-left: 20px;
+    }
+
+    .welcome-main .bottom-block .title figure{
+        height: 125px;
+    }
+
+    .welcome-main .bottom-block .try {
+        display: none;
     }
 
     .welcome-main .left-block .back{
         background-image: url("./images/mobile2.png");
-        top: -130px;
-        height: 563px;
+        top: -55px;
+        height: 236px;
     }
 
+    .welcome-main .right1-block .image,
     .welcome-main .middle-block .image,
     .welcome-main .left-block .image {
-        height: 223px;
+        height: 100px;
+        margin: 0; 
     }
 
-    .welcome-main .bottom-block .right-block,
+    .welcome-main .right2-block{
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .welcome-main .right2-block .image{
+        height: 120px;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .welcome-main .right2-block .title figure {
+        top: -64px;
+        left: -51px;
+    }
+
+    .welcome-main .bottom-block .left-block,
     .welcome-main .bottom-block .middle-block{
-        width: 100%;
+        width: 50%;
+        margin-bottom: 32px;
+        gap: 20px;
     }
 
     .welcome-main .middle-block .back{
         background-image: url("./images/mobile3.png");
-        height: 556px;
+        height: 203px;
+        top: -23px;
     }
 
+    .welcome-main .right2-block .back,
     .welcome-main .right1-block .back{
         background-image: url("./images/mobile4.png");
-        top: -78px;
-        height: 555px;
+        top: 0px;
+        height: 200px;
     }
 
     .welcome-main .bottom-block .right-block{
         height: auto;
-        gap: 150px;
+        display: flex;
+        flex-flow: row;
+        gap: 0;
+        width: 100%;
+    }
+
+    .welcome-main .right1-block,
+    .welcome-main .right2-block{
+        width: 50%;
     }
 
     .welcome-main .right1-block {
         align-items: center;
-    }
-
-    .welcome-main .right1-block .image {
-        margin: 50px 0 10px;
-        height: 176px;
+        justify-content: center;
     }
 
     .welcome-main .right1-block .try {
         margin-top: 20px;
     }
 
-    .welcome-main .right2-block{
-        display: none;
+    .welcome-main .right1-block .image{
+        height: 85px;
     }
 }
