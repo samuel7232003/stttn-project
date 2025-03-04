@@ -6,6 +6,7 @@
     height: 100%;
     display: flex;
     flex-flow: column;
+    overflow: hidden;
 }
 .transbox-main .title{
     display: flex;
@@ -60,6 +61,25 @@
 .transbox-main .footer{
     height: 50px;
     background-color: #fff;
+    display: flex;
+    gap: 20px;
+    padding: 0 20px;
+    align-items: center;
+}
+
+.transbox-main .footer figure{
+    height: 18px;
+    transition: transform 0.25s ease-in-out;
+    cursor: pointer;
+}
+
+.transbox-main .footer figure:hover{
+    transform: rotate(360deg);
+}
+
+.transbox-main .footer figure img{
+    height: 100%;
+    width: auto;
 }
 
 @media screen and (max-width: 440px) {

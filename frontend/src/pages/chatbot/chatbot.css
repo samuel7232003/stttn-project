@@ -35,6 +35,7 @@
     align-items: center;
     gap: 10px;
     min-height: 60px;
+    position: relative;
 }
 
 .chatbot-main .chat .title figure{
@@ -49,6 +50,15 @@
 .chatbot-main .chat .title p{
     font-size: 24px;
     font-weight: bold;
+}
+
+.chatbot-main .chat .title .chat-mode{
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
 }
 
 .chatbot-main .chat .chat-list{
@@ -154,5 +164,9 @@
     .chatbot-main .chat .footer{
         gap: 10px;
         padding: 0 10px;
+    }
+
+    .chatbot-main .chat .title .chat-mode{
+        top: 60px
     }
 }

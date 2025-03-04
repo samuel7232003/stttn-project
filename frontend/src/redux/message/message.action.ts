@@ -7,12 +7,12 @@ import { sendMessageServer} from "../../service/messageService"
 
 export const messageAction = messageSlice.actions;
 
-export const sendMessage = (content: string):ThunkAction<void, RootState, unknown, AnyAction> => {
+export const sendMessage = (content: string, lang:string, level: string):ThunkAction<void, RootState, unknown, AnyAction> => {
     return async(dispatch, getState)=>{
         const newMess:Message = {_id: "", idUser: "", content: content, role: "USER" }
         const data: Message[] = [...getState().message.listMessage, newMess];
         dispatch(messageAction.setListMessage(data));
-        const rep = await sendMessageServer(content);
+        const rep = await sendMessageServer(content, lang, level);
         const repMess:Message = {_id: "", idUser: "", content: rep, role: "SYSTEM" };
         const newData: Message[] = [...data, repMess];
         dispatch(messageAction.setListMessage(newData));

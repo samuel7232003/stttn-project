@@ -35,9 +35,16 @@ const openai = new OpenAI({
   
   // Endpoint xử lý chat
 app.post("/api/chat", async (req, res) => {
+    let promt = "'" + req.body.messages+"' , you are an English teacher for Vietnamese people, your name is Enggram";
+    if(req.body.level ==="basic") promt += ", please answer this question simply amd sort.";
+    else if(req.body.level ==="high") promt += ", please respond to this question with high level.";
+    else if(req.body.level ==="ielts") promt += ", please respond to this question for your students to learn IELTS.";
+    else if(req.body.level ==="toeic") promt += ", please respond to this question so your students can learn toeic.";
+    if(req.body.lang === "en") promt += " Please response by English.";
+    else if(req.body.lang === "vi") promt += " Please answer by english and explain by vietnamese";
     try {
         const completion = await openai.chat.completions.create({
-            messages: [{ role: "user", content:"'"+ req.body.messages+"'" + ", you are a Vietnamese teacher english name's Enggram, please response simple by english and then explain your dificult vocabulary"}],
+            messages: [{ role: "user", content: promt}],
             model: "gpt-4o-mini",
         });
 

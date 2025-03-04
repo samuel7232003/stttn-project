@@ -68,3 +68,13 @@
 .card-main .menu div.delete p{
     color: #F95454;
 }
+
+@media screen and(max-width: 440px) {
+    .card-main .menu{
+        display: none;
+    }
+
+    .card-main .menu:hover{
+        display: flex;
+    }
+}

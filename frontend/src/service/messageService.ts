@@ -1,10 +1,12 @@
 import { apiInstance } from "./api";
 
-export async function sendMessageServer(content:string) :Promise<any>{;
+export async function sendMessageServer(content:string, lang: string, level: string) :Promise<any>{;
 
     try {
         const response:any = await apiInstance.post("/api/chat", {
-                messages: content 
+                messages: content,
+                lang: lang,
+                level: level
             }
         );
         return response.choices[0].message.content;
