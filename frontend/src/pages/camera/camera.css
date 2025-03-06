@@ -17,8 +17,13 @@
     overflow: hidden;
     margin: 0 auto;
     margin-top: 70px;
-    border-radius: 10px;
     position: relative;
+    display: flex;
+    gap: 5px;
+}
+
+.camera-main .video .video-main{
+    flex-grow: 1;
 }
 
 .camera-main .video video,
@@ -26,6 +31,41 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
+}
+
+.camera-main .video .list-word{
+    min-width: 300px;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    overflow: auto;
+    position: relative;
+}
+
+.camera-main .video .list-word .title{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.camera-main .video .list-word .title figure{
+    height: 24px;
+}
+
+.camera-main .video .list-word .title figure img{
+    height: 100%;
+    width: auto;
+}
+
+.camera-main .video .list-word ul{
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    width: max-content;
+    flex-flow: column;
+    width: 100%;
 }
 
 .camera-main .voca{
@@ -38,7 +78,9 @@
     border-radius: 10px;
     overflow: auto;
     padding: 10px;
+    position: relative;
 }
+
 
 .camera-main .voca ul{
     display: flex;
@@ -48,6 +90,7 @@
     width: max-content;
 }
 
+.camera-main .video .list-word ul .item,
 .camera-main .voca ul .item{
     box-sizing: border-box;
     height: 100%;
@@ -58,16 +101,91 @@
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    position: relative;
 }
 
+.camera-main .video .list-word ul .item{
+    width: 100%;
+    padding: 23px;
+}
+
+.camera-main .video .list-word ul .word,
 .camera-main .voca .word{
     font-weight: bold;
     font-size: 20px;
 }
 
+.camera-main .video .list-word ul .mean,
 .camera-main .voca .mean{
     font-size: 20px;
     font-style: italic;
+}
+
+.camera-main .video .list-word ul .item figure,
+.camera-main .voca ul .item figure{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.camera-main .video .list-word ul .item figure img,
+.camera-main .voca ul .item figure img{
+    width: 100%;
+    height: auto;
+}
+
+.camera-main .video .list-word .exit{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.camera-main .video .list-word .exit img{
+    height: 100%;
+    width: auto;
+}
+
+.camera-main .voca .show-list{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: #d9d9d9;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.camera-main .voca .show-list img{
+    height: 60%;
+    width: auto;
+    transition: transform 0.25s ease-in-out;
+}
+
+.camera-main .voca .show-list img:hover{
+    transform: rotate(360deg);
+}
+
+.camera-main .voca .show-list p{
+    position: absolute;
+    font-size: 10px;
+    height: 14px;
+    width: 14px;
+    text-align: center;
+    line-height: 14px;
+    color: white;
+    background-color: red;
+    border-radius: 14px;
+    top: -3px;
+    right: -3px;
 }
 
 .camera-main .mode{

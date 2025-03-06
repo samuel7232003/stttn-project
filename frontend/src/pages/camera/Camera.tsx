@@ -5,9 +5,20 @@ import detec_icon from "./images/image-focus.png";
 import { Tooltip } from 'antd';
 import { useOutletContext } from 'react-router-dom';
 import word from "../../data/word.json"
+import save_icon from "./images/Icon (3).png"
+import saved_icon from "./images/Icon (4).png"
+import list_icon from "./images/file-02.png"
+import { useAppDispatch, useAppSelector } from '../../redux/builder';
+import exit_icon from "./images/x-01.png"
+import { Word } from '../../redux/word/word.state';
+import { addWord, deleteWord } from '../../redux/word/word.action';
+import delete_icon from './images/trash-01 (1).png'
 
 export default function Camera() {
     const {setCurPage}:any = useOutletContext();
+    const listWord = useAppSelector(state => state.word.listWord);
+    const dispatch = useAppDispatch();
+
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const videoRef = useRef<HTMLVideoElement | null>(null);
     const wsRef = useRef<WebSocket | null>(null);
@@ -16,6 +27,8 @@ export default function Camera() {
     const [detections, setDetections] = useState<any[]>([]);
     const [mode, setMode] = useState<boolean>(true);
     const streamRef = useRef<MediaStream | null>(null);
+    const [isShowList, setIsShowList] = useState(false);
+    
 
     function findWord(s: string){
         const w:any = word.words.find((item)=> item.word===s);
@@ -26,7 +39,7 @@ export default function Camera() {
 
     useEffect(() => {
         setCurPage("camera");
-        wsRef.current = new WebSocket(`wss://${process.env.REACT_APP_BASE_PYTHON}/ws`);
+        wsRef.current = new WebSocket(`ws://${process.env.REACT_APP_BASE_PYTHON}/ws`);
 
         wsRef.current.onopen = () => console.log("✅ WebSocket đã kết nối!!!!!!!");
         wsRef.current.onmessage = (event) => {
@@ -45,6 +58,8 @@ export default function Camera() {
         };
         wsRef.current.onerror = (error) => console.error("❌ WebSocket lỗi:", error);
         wsRef.current.onclose = () => console.log("❌ WebSocket đóng!");
+
+        startCamera();
 
         return () => {
             wsRef.current?.close();
@@ -106,11 +121,6 @@ export default function Camera() {
         }
     };
 
-    useEffect(() => {
-        startCamera();
-        // eslint-disable-next-line
-    }, []);
-
     function toggleMode() {
         setMode(prevMode => {
             const newMode = !prevMode;
@@ -129,27 +139,61 @@ export default function Camera() {
         return Array.from(map.values());
     }
 
+    function handleAddWord(word:string){
+        const newWord = findWord(word);
+        const addNewWord: Word = {_id: newWord.id, word: newWord.word, mean: newWord.means, sym: newWord.sym};
+        dispatch(addWord(addNewWord));
+    }
+
+    const checkSavelist = (word:string)=>{
+        const check = listWord.find(item => item.word === word);
+        if(check) return false;
+        else return true;
+    }
+
     return (
         <div className="camera-main">
             <div className='video'>
-                <video ref={videoRef} autoPlay playsInline muted style={{height: !mode? "0":"100%"}}/>
-                {processedImage ? <img src={processedImage} alt="Processed Video" key={processedImage} /> : <p>Loading...</p>}
-                <canvas ref={canvasRef} style={{ display: "none" }} />
-                <Tooltip placement="topLeft" title={mode ? "Chuyển sang chế độ Detection" : "Chuyển sang chế độ thường"}>
-                    <div className='mode' onClick={toggleMode}>
-                        <figure className='cam-mode' style={mode ? { backgroundColor: "white" } : {}}><img src={cam_icon} alt="" /></figure>
-                        <figure className='detec-mode' style={!mode ? { backgroundColor: "white" } : {}}><img src={detec_icon} alt="" /></figure>
+                <div className='video-main'>
+                    <video ref={videoRef} autoPlay playsInline muted style={{height: !mode? "0":"100%"}}/>
+                    {processedImage ? <img src={processedImage} alt="Processed Video" key={processedImage} /> : <p>Loading...</p>}
+                    <canvas ref={canvasRef} style={{ display: "none" }} />
+                    <Tooltip placement="topLeft" title={mode ? "Chuyển sang chế độ Detection" : "Chuyển sang chế độ thường"}>
+                        <div className='mode' onClick={toggleMode}>
+                            <figure className='cam-mode' style={mode ? { backgroundColor: "white" } : {}}><img src={cam_icon} alt="" /></figure>
+                            <figure className='detec-mode' style={!mode ? { backgroundColor: "white" } : {}}><img src={detec_icon} alt="" /></figure>
+                        </div>
+                    </Tooltip>
+                </div>
+                {isShowList&&<div className='list-word'>
+                    <div className='title'>
+                        <figure><img src={list_icon} alt="" /></figure>
+                        <p>Danh sách từ đã lưu:</p>
                     </div>
-                </Tooltip>
+                    <ul className='list'>
+                        {listWord.map((item:Word, index:number) => <li key={index} className='item'>
+                            <figure onClick={() => dispatch(deleteWord(item._id))}><img src={delete_icon} alt="" /></figure>
+                            <p className='word'>{item.word}</p>
+                            <p className='sym'>{item.sym}</p>
+                            <p className='mean'>{item.mean}</p>
+                        </li>)}
+                    </ul>
+                    <figure className='exit' onClick={() => setIsShowList(false)}><img src={exit_icon} alt=""/></figure>
+                </div>}
             </div>
             <div className='voca'>
                 <ul>
                     {listDetec(detections).map((item:any, index:number) => <li key={index} className='item'>
+                        {checkSavelist(item.word)?<figure onClick={() => handleAddWord(item.word)}><img src={save_icon} alt="" /></figure>
+                        :<figure><img src={saved_icon} alt=""/></figure>}
                         <p className='word'>{item.word}</p>
                         <p className='sym'>{item.sym}</p>
                         <p className='mean'>{item.means}</p>
                     </li>)}
                 </ul>
+                {!isShowList&&<Tooltip title="Xem danh sách từ đã lưu">
+                    <figure onClick={() => setIsShowList(true)} className='show-list'><img src={list_icon} alt="" />{listWord.length>0&&<p>{listWord.length}</p>}</figure>
+                </Tooltip>}
             </div>
         </div>
     );
