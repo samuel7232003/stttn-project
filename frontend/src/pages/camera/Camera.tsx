@@ -171,7 +171,7 @@ export default function Camera() {
                     {processedImage ? <img src={processedImage} alt="Processed Video" key={processedImage} /> : <p>Loading...</p>}
                     <canvas ref={canvasRef} style={{ display: "none" }} />
                     <Tooltip placement="topLeft" title={mode ? "Chuyển sang chế độ Detection" : "Chuyển sang chế độ thường"}>
-                        <div className='mode' onClick={toggleMode}>
+                        <div className={'mode'+isShowList?" hide":""} onClick={toggleMode}>
                             <figure className='cam-mode' style={mode ? { backgroundColor: "white" } : {}}><img src={cam_icon} alt="" /></figure>
                             <figure className='detec-mode' style={!mode ? { backgroundColor: "white" } : {}}><img src={detec_icon} alt="" /></figure>
                         </div>

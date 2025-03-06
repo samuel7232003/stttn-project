@@ -221,6 +221,10 @@
         box-sizing: border-box;
     }
 
+    .camera-main .mode.hide{
+        display: none;
+    }
+
     .camera-main .voca{
         box-sizing: border-box;
         min-height: 124px;
