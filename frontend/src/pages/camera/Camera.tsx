@@ -11,8 +11,9 @@ import list_icon from "./images/file-02.png"
 import { useAppDispatch, useAppSelector } from '../../redux/builder';
 import exit_icon from "./images/x-01.png"
 import { Word } from '../../redux/word/word.state';
-import { addWord, deleteWord } from '../../redux/word/word.action';
+import { addWord, deleteWord, setListWord } from '../../redux/word/word.action';
 import delete_icon from './images/trash-01 (1).png'
+import { stringify } from 'querystring';
 
 export default function Camera() {
     const {setCurPage}:any = useOutletContext();
@@ -39,7 +40,7 @@ export default function Camera() {
 
     useEffect(() => {
         setCurPage("camera");
-        wsRef.current = new WebSocket(`ws://${process.env.REACT_APP_BASE_PYTHON}/ws`);
+        wsRef.current = new WebSocket(`wss://${process.env.REACT_APP_BASE_PYTHON}/ws`);
 
         wsRef.current.onopen = () => console.log("✅ WebSocket đã kết nối!!!!!!!");
         wsRef.current.onmessage = (event) => {
@@ -60,6 +61,9 @@ export default function Camera() {
         wsRef.current.onclose = () => console.log("❌ WebSocket đóng!");
 
         startCamera();
+
+        const strHis = localStorage.getItem("listWord");
+        if(strHis) dispatch(setListWord(JSON.parse(strHis))); 
 
         return () => {
             wsRef.current?.close();
@@ -143,6 +147,14 @@ export default function Camera() {
         const newWord = findWord(word);
         const addNewWord: Word = {_id: newWord.id, word: newWord.word, mean: newWord.means, sym: newWord.sym};
         dispatch(addWord(addNewWord));
+        const newList:Word[] = [...listWord, newWord];
+        localStorage.setItem("listWord", JSON.stringify(newList));
+    }
+
+    function handleDeleteWord(id: string){
+        dispatch(deleteWord(id));
+        const newList:Word[] = listWord.filter(item => item._id!==id);
+        localStorage.setItem("listWord", JSON.stringify(newList));
     }
 
     const checkSavelist = (word:string)=>{
@@ -172,7 +184,7 @@ export default function Camera() {
                     </div>
                     <ul className='list'>
                         {listWord.map((item:Word, index:number) => <li key={index} className='item'>
-                            <figure onClick={() => dispatch(deleteWord(item._id))}><img src={delete_icon} alt="" /></figure>
+                            <figure onClick={() => handleDeleteWord(item._id)}><img src={delete_icon} alt="" /></figure>
                             <p className='word'>{item.word}</p>
                             <p className='sym'>{item.sym}</p>
                             <p className='mean'>{item.mean}</p>
