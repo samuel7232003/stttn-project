@@ -28,3 +28,16 @@ export async function transMessageServer(content:string, lang:string) :Promise<a
         throw(error);
     }
 }
+
+export async function explainServer(content:string) :Promise<any>{;
+
+    try {
+        const response:any = await apiInstance.post("/api/explain", {
+                messages: content
+            }
+        );
+        return response.choices[0].message.content;
+    } catch (error) {
+        throw(error);
+    }
+}

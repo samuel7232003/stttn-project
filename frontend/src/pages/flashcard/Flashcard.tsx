@@ -19,6 +19,7 @@ export default function Flashcard(){
     const [flashcardCur, setFlashcardCur] = useState<any>();
     const [cardCur, setCardCur] = useState<any>();
     const [listMyFlashcard, setListMyFlashcard] = useState<any>([]);
+    const [listAdminFlashcard, setListAdminFlashcard] = useState<any>([])
     const [newName, setNewName] = useState("");
     const [isEditMode, setIsEditMode] = useState(false);
     const [flashcardEdit, setFlashcardEdit] = useState("");
@@ -26,6 +27,15 @@ export default function Flashcard(){
 
     useEffect(() => {
         setCurPage("flashcard");
+        async function fetchDataFlashcard() {
+            const listFlashcard = await getListFlashCard("ADMIN");
+            setListAdminFlashcard(listFlashcard);
+        }
+        try {
+            fetchDataFlashcard();
+        } catch (error) {
+            console.log(error);
+        }
         // eslint-disable-next-line
     },[])
 
@@ -132,16 +142,11 @@ export default function Flashcard(){
                 <div className="orther">
                     <p className="title">Các bộ flashcard tham khảo:</p>
                     <ul>
-                        <li>
-                            <p className="name">Động vật</p>
-                            <p className="num">Số từ: 10</p>
+                        {listAdminFlashcard.map((item:any, index:number) => <li key={index}>
+                            <p className="name">{item.name}</p>
+                            <p className="num">Số từ: {item.sum}</p>
                             <p className="see">Xem ngay!</p>
-                        </li>
-                        <li>
-                            <p className="name">Động vật</p>
-                            <p className="num">Số từ: 10</p>
-                            <p className="see">Xem ngay!</p>
-                        </li>
+                        </li>)}
                     </ul>
                 </div>
             </div>

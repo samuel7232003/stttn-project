@@ -70,5 +70,20 @@ app.post("/api/trans", async (req, res) => {
     }
 });
 
+app.post("/api/explain", async (req, res) => {
+    let promt = "'"+ req.body.messages+"'" + ", please list 3 examples use this content in english and just type it.";
+    try {
+        const completion = await openai.chat.completions.create({
+            messages: [{ role: "user", content: promt}],
+            model: "gpt-4o-mini",
+        });
+
+        res.json(completion);
+    } catch (error) {
+      res.status(500).json({ error: error.message || "Internal Server Error" });
+    }
+});
+
+
 connection();
 server.listen(port, () => console.log(`🚀 WebSocket server chạy tại http://localhost:${port}`));

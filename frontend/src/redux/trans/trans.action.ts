@@ -16,4 +16,3 @@ export const addTrans = (content: string):ThunkAction<void, RootState, unknown, 
         dispatch(transAction.setListTrans(data));
     }
 }
-
